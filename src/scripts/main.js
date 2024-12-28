@@ -27,15 +27,21 @@ function sortEmployees() {
   employees.sort((employee1, employee2) => employee2.salary - employee1.salary);
 
   const listElement = document.querySelector('ul');
-
-  listElement.innerHTML = '';
+  const fragment = document.createDocumentFragment();
 
   for (const employee of employees) {
     const listItem = document.createElement('li');
 
     listItem.textContent = employee.name;
-    listElement.appendChild(listItem);
+    listItem.dataset.position = employee.position;
+    listItem.dataset.salary = `$${employee.salary.toLocaleString()}`;
+    listItem.dataset.age = employee.age;
+
+    fragment.appendChild(listItem);
   }
+
+  listElement.innerHTML = '';
+  listElement.appendChild(fragment);
 }
 
 sortEmployees();

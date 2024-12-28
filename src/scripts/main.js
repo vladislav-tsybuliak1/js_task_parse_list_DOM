@@ -31,7 +31,10 @@ function sortEmployees() {
   listElement.innerHTML = '';
 
   for (const employee of employees) {
-    listElement.innerHTML += `<li>${employee.name}</li>`;
+    const listItem = document.createElement('li');
+
+    listItem.textContent = employee.name;
+    listElement.appendChild(listItem);
   }
 }
 
